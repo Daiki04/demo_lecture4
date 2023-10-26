@@ -9,7 +9,7 @@ const canvas = document.getElementById('myCanvas');
 const context = canvas.getContext('2d');
 
 context.strokeStyle = 'black'; // 線の色
-context.lineWidth = 12; // 線の太さ
+context.lineWidth = 20; // 線の太さ
 context.lineCap = 'round'; // 線の端の形状
 
 // 背景の塗りつぶし
@@ -69,7 +69,10 @@ const upload = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-        document.getElementById("prediction").innerHTML = data.prediction;
+        content = "<h1>予測結果</h1>" + 
+        "<h2>" + data["prediction"] + "</h2>" +
+        "<img id='uploadImage' src='" + data["uriImage"] + "' alt='uploadImage' width='" + canvas.width + "' height='" + canvas.height + "'>";
+        document.getElementById("resultArea").innerHTML = content;
     });
 }
 
