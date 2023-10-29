@@ -30,8 +30,7 @@ def upload():
     cv2.imwrite("static/img/" + str(time.time()) + ".png", img)
 
     prediction = "ここに予測結果を表示する"
-    # uriImage = "data:image/png;base64," + base64.b64encode(cv2.imencode('.png', img)[1]).decode()
-    uriImage = "static/img/" + str(time.time()) + ".png"
+    uriImage = "data:image/png;base64," + base64.b64encode(cv2.imencode('.png', img)[1]).decode()
 
     return jsonify({'prediction': prediction, 'uriImage': uriImage})
 
