@@ -73,6 +73,7 @@ const upload = () => {
         "<h2>" + data["prediction"] + "</h2>" +
         "<img id='uploadImage' src='" + data["uriImage"] + "' alt='uploadImage' width='" + canvas.width + "' height='" + canvas.height + "'>";
         document.getElementById("resultArea").innerHTML = content;
+        console.log(data["uriImage"]);
     });
 }
 
