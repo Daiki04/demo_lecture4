@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import cv2
 import numpy as np
 import base64
+import time
 
 app = Flask(__name__)
 
@@ -26,11 +27,11 @@ def upload():
     img = image_cutout(img)
 
     # 画像を保存
-    cv2.imwrite("received_image.png", img)
+    cv2.imwrite("static/img/" + str(time.time()) + ".png", img)
 
     prediction = "ここに予測結果を表示する"
     uriImage = "data:image/png;base64," + base64.b64encode(cv2.imencode('.png', img)[1]).decode()
-    
+
     return jsonify({'prediction': prediction, 'uriImage': uriImage})
 
 def image_cutout(img):
